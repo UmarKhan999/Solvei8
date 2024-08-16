@@ -1,0 +1,14 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+html,
+body {
+  padding: 50px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #94bfff, #c4dcff);
+}

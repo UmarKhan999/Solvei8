@@ -1,0 +1,68 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+.form-container {
+  width: 60%;
+  height: 600px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  margin-bottom: 8px;
+  font-weight: 550;
+  color: #007bff;
+}
+input {
+  margin-bottom: 16px;
+  border: none;
+  width: 300px;
+  padding: 9px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background-color: #eaf2ff;
+}
+button {
+  width: 320px;
+  padding: 9px;
+  border: none;
+  border-radius: 15px;
+  background-color: #0072ec;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #0063ce;
+}
+#button {
+  padding-left: 4px;
+}
+
+form h4 {
+  color: #595c5f;
+}
+.innerconatiner {
+  display: flex;
+  align-items: center;
+  padding: 80px;
+}
+#errormessage,
+#errormessageemail,
+#loginErrorMessage {
+  color: red;
+  padding-bottom: 20px;
+}
+.error {
+  color: red;
+}
+h2 {
+  color: black;
+}

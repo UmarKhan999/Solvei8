@@ -1,0 +1,46 @@
+<div class="form-container" *ngIf="showloginpage">
+  <div class="innerconatiner">
+    <form [formGroup]="loginform" (ngSubmit)="onSubmit()" id="loginform">
+      <h2>Welcome Back,{{ pdata }}</h2>
+      <label for="email">Enter Email ID</label>
+      <input
+        type="text"
+        id="email"
+        placeholder="Randomuser@gmail.com"
+        formControlName="email"
+        #Emailaddress
+      />
+      <div
+        class="error"
+        *ngIf="emailControl?.errors?.['required'] && emailControl?.touched"
+      >
+        Email is Required
+      </div>
+      <div
+        class="error"
+        *ngIf="emailControl?.errors?.['email'] && emailControl?.touched"
+      >
+        Invalid Email Format
+      </div>
+      <label for="password">Enter Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+      <div
+        class="error"
+        *ngIf="passwordControl?.errors?.['required'] && passwordControl?.touched"
+      >
+        Password is Required
+      </div>
+      <p *ngIf="loginErrorMessage" id="loginErrorMessage">
+        Invalid username or password
+      </p>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+<app-successmessage *ngIf="showsuccessmessage"></app-successmessage>

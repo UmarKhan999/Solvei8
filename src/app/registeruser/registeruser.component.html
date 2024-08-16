@@ -1,0 +1,221 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+
+<div class="form-container" *ngIf="Showform3">
+  <div *ngIf="!showSectionTwo" class="form-content">
+    <div class="innercontainer">
+      <form id="form3" [formGroup]="registerform" (ngSubmit)="onContinue()">
+        <h3>Create Account</h3>
+        <div>
+          <p id="blue"></p>
+          <p id="grey"></p>
+        </div>
+        <label for="registeremail">Enter Email ID</label>
+        <input
+          type="text"
+          id="registeremail"
+          placeholder="Randomuser@gmail.com"
+          formControlName="email"
+        />
+        <div
+          class="error"
+          *ngIf="
+            registerform.controls['email'].touched &&
+            registerform.controls['email'].invalid
+          "
+        >
+          <span *ngIf="registerform.controls['email'].errors?.['required']">
+            Email is Required
+          </span>
+          <span *ngIf="registerform.controls['email'].errors?.['email']">
+            Email is not Valid
+          </span>
+        </div>
+
+        <label for="registername">Enter Full Name</label>
+        <input
+          type="text"
+          id="registername"
+          placeholder="Full Name"
+          formControlName="fullname"
+        />
+        <div
+          class="error"
+          *ngIf="
+            registerform.controls['fullname'].touched &&
+            registerform.controls['fullname'].invalid
+          "
+        ></div>
+        <label for="registerpassword">Create Password</label>
+        <input
+          type="password"
+          id="registerpassword"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <div
+          class="error"
+          *ngIf="
+            registerform.controls['password'].touched &&
+            registerform.controls['password'].invalid
+          "
+        ></div>
+
+        <span>
+          <button id="button" type="submit">Continue</button>
+        </span>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="showSectionTwo" class="form-content">
+    <div class="form4-container">
+      <form id="form4" [formGroup]="registerform" (ngSubmit)="onRegister()">
+        <div class="icon-text-container">
+          <span
+            class="material-symbols-outlined"
+            (click)="onBack()"
+            id="backbutton"
+            >reply</span
+          >
+          <p id="ogback" for="backbutton" (click)="onBack()">Go Back</p>
+        </div>
+        <h3>Create Account</h3>
+        <div>
+          <p id="blue"></p>
+          <p id="blue"></p>
+        </div>
+        <label for="orgname">Organization Name</label>
+        <input
+          type="text"
+          id="orgname"
+          placeholder="Organization Name"
+          formControlName="organizationname"
+          (input)="onInputChange()"
+        />
+        <div *ngIf="orgnameerror" class="error">
+          {{ orgnameerror }}
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            registerform.controls['organizationname'].touched &&
+            registerform.controls['organizationname'].invalid
+          "
+        ></div>
+        <label for="orgid">Organization ID</label>
+        <input
+          type="text"
+          id="orgid"
+          placeholder="Organization ID"
+          formControlName="organizationid"
+          (input)="onInputChange()"
+        />
+        <div *ngIf="orgiderror" class="error">
+          {{ orgiderror }}
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            registerform.controls['organizationid'].touched &&
+            registerform.controls['organizationid'].invalid
+          "
+        ></div>
+        <label for="designation">Designation</label>
+        <select id="designation" formControlName="designation">
+          <option value="" disabled>Select Designation</option>
+          <option value="Manager">Manager</option>
+          <option value="Team Lead">Team Lead</option>
+          <option value="Senior Developer">Senior Developer</option>
+          <option value="Junior Developer">Junior Developer</option>
+          <option value="Intern">Intern</option>
+        </select>
+        <div
+          class="error"
+          *ngIf="
+            registerform.controls['designation'].touched &&
+            registerform.controls['designation'].invalid
+          "
+        ></div>
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" formControlName="dob" />
+        <div
+          class="error"
+          *ngIf="
+            registerform.controls['dob'].touched &&
+            registerform.controls['dob'].invalid
+          "
+        ></div>
+
+        <div class="form-group">
+          <div class="input-container">
+            <label for="city">City</label>
+            <input
+              type="text"
+              id="city"
+              placeholder="City"
+              formControlName="city"
+            />
+            <div
+              class="error"
+              *ngIf="
+                registerform.controls['city'].touched &&
+                registerform.controls['city'].invalid
+              "
+            ></div>
+          </div>
+          <div class="input-container">
+            <label for="pincode">Pincode</label>
+            <input
+              type="text"
+              id="pincode"
+              placeholder="Pincode"
+              formControlName="pincode"
+            />
+            <div
+              class="error"
+              *ngIf="
+                registerform.controls['pincode'].touched &&
+                registerform.controls['pincode'].invalid
+              "
+            >
+              <span
+                *ngIf="registerform.controls['pincode'].errors?.['minlength']"
+              >
+                Pincode Must be at Least 6 Digits
+              </span>
+            </div>
+          </div>
+        </div>
+        <span
+          class="error"
+          *ngIf="
+          registerform.controls['email'].errors?.['required'] ||
+          registerform.controls['fullname'].errors?.['required'] ||
+          registerform.controls['password'].errors?.['required'] ||
+          registerform.controls['organizationname'].errors?.['required'] ||
+          registerform.controls['organizationid'].errors?.['required'] ||
+          registerform.controls['designation'].errors?.['required'] ||
+          registerform.controls['dob'].errors?.['required'] ||
+          registerform.controls['city'].errors?.['required'] ||
+          registerform.controls['pincode'].errors?.['required']
+        "
+        >
+          All fields are required
+        </span>
+
+        <span id="button">
+          <button type="submit">Register Now</button>
+        </span>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-successmessageregister
+  *ngIf="showregistersuccess"
+></app-successmessageregister>
+<app-loginpage *ngIf="showLoginPage"></app-loginpage>

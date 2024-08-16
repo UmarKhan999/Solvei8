@@ -1,0 +1,73 @@
+<div
+  class="container"
+  [ngClass]="{
+    'expanded-height': showSectionTwo,
+    'default-height': !showSectionTwo
+  }"
+>
+  <div
+    #imageSection
+    class="Imagesection"
+    class="Imagesection"
+    [ngClass]="{
+      'expanded-image-height': showSectionTwo,
+      'default-image-height': !showSectionTwo
+    }"
+  >
+    <span id="logo">
+      <img
+        src="https://assets1.zilingoasiamall.com/assets/react-assets/bundle/images/solvei8-logo-white.47397617dd1515def3fc1cbbf7ec5ad3.svg"
+        alt="Solvei8"
+        id="logoimage"
+      />
+    </span>
+    <img class="blend-image" src="assets/Imagess/Img.png" alt="Image" />
+  </div>
+
+  <div
+    *ngIf="showFormContainer || showLoginPage || showRegisterPage"
+    class="container"
+    #container
+  >
+    <div class="innercontainer">
+      <form
+        *ngIf="showFormContainer"
+        [formGroup]="form1"
+        id="form1"
+        (ngSubmit)="Submitform()"
+      >
+        <h3>Welcome</h3>
+
+        <label for="_name">Enter Name</label>
+        <input
+          type="text"
+          id="_name"
+          formControlName="username"
+          placeholder="Enter Full Name"
+          (keyup)="(0)"
+        />
+
+        <p>(OR)</p>
+
+        <label for="_mobile">Enter Mobile No.</label>
+        <input
+          type="tel"
+          id="_mobile"
+          formControlName="mobile"
+          pattern="[0-9]{10}"
+          placeholder="91+"
+        />
+        <p class="error" id="emptyerror" *ngIf="emptyerror">
+          Fields Cannot be empty
+        </p>
+
+        <span id="button"><button type="submit">Next</button></span>
+      </form>
+      <app-loginpage
+        *ngIf="showLoginPage"
+        [pdata]="form1.get('username')?.value"
+      ></app-loginpage>
+      <app-registeruser *ngIf="showRegisterPage"></app-registeruser>
+    </div>
+  </div>
+</div>
